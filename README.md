@@ -44,12 +44,12 @@
    ```text
    PermitRootLogin yes
    ```
-   * ![Редактирование sshd_config](screenshots/sshd_config.png)
+   * ![Редактирование sshd_config](images/sshd_config.png)
 3. Выполнен перезапуск службы для применения новых настроек конфигурации:
    ```bash
    sudo systemctl restart ssh
    ```
-   * ![Перезапуск службы SSH](/ssh_restart2.png)
+   * ![Перезапуск службы SSH](images/ssh_restart2.png)
 
 ### Шаг 5. Установка и настройка OpenSSH в Windows PowerShell
 

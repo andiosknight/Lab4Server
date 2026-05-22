@@ -21,7 +21,11 @@
    ```
 2. Убедились, что служба активна (`active (running)`) и ожидает входящих подключений.
    * [Проверка статуса SSH](images/ssh_status.png)
-
+3. В случае, если служба неактивна, как показано выше, нужно выполнить перезагрузку:
+   ```bash
+   sudo systemctl restart ssh
+   ```
+   * [Повторная проверка после перезапуска](images/ssh_restart1.png)
 ### Шаг 3. Настройка сети и проброс портов (Port Forwarding)
 
 1. Для доступа к изолированной виртуальной машине с хост-компьютера (Windows) открыты настройки сети ВМ (тип подключения: **NAT**).
@@ -45,7 +49,7 @@
    ```bash
    sudo systemctl restart ssh
    ```
-   * [Перезапуск службы SSH](/ssh_restart.png)
+   * [Перезапуск службы SSH](/ssh_restart2.png)
 
 ### Шаг 5. Установка и настройка OpenSSH в Windows PowerShell
 
@@ -58,20 +62,12 @@
    # Установка сервера OpenSSH
    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
    ```
-   * [Установка OpenSSH через PowerShell](images/install_openssh.png)
-3. Запущена служба Windows SSH-сервера и установлен тип запуска "Автоматически":
-   ```powershell
-   Start-Service sshd
-   Set-Service -Name sshd -StartupType 'Automatic'
-   ```
-   * [Запуск службы sshd в Windows](images/windows_sshd_start.png)
-
 ### Шаг 6. Подключение к серверу через CMD
 
 1. На хост-машине открыта командная строка (**CMD**).
 2. Выполнено подключение к настроенной виртуальной машине Ubuntu через проброшенный ранее локальный порт `2222`:
    ```cmd
-   ssh root@127.0.0.1 -p 2222
+   ssh sa@localhost-p 2222
    ```
 3. После ввода пароля суперпользователя `root` сессия успешно установилась, доступ к управлению сервером получен.
    * [Успешное SSH-подключение через CMD](images/cmd_connection.png)

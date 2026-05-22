@@ -11,7 +11,7 @@
 
 1. Скачан официальный образ операционной системы Ubuntu.
 2. Произведена установка и запуск виртуальной машины внутри гипервизора Oracle VM VirtualBox.
-   *[Запуск ВМ Ubuntu](images/vm_start.png)
+   * ![Запуск ВМ Ubuntu](images/vm_start.png)
 
 ### Шаг 2. Проверка службы SSH на сервере Ubuntu
 
@@ -20,19 +20,19 @@
    sudo systemctl status ssh
    ```
 2. Убедились, что служба активна (`active (running)`) и ожидает входящих подключений.
-   * [Проверка статуса SSH](images/ssh_status.png)
+   * ![Проверка статуса SSH](images/ssh_status.png)
 3. В случае, если служба неактивна, как показано выше, нужно выполнить перезагрузку:
    ```bash
    sudo systemctl restart ssh
    ```
-   * [Повторная проверка после перезапуска](images/ssh_restart1.png)
+   * ![Повторная проверка после перезапуска](images/ssh_restart1.png)
 ### Шаг 3. Настройка сети и проброс портов (Port Forwarding)
 
 1. Для доступа к изолированной виртуальной машине с хост-компьютера (Windows) открыты настройки сети ВМ (тип подключения: **NAT**).
 2. В дополнительных настройках адаптера открыто меню **Проброс портов** и добавлено новое правило:
    * **Порт хоста:** `2222`
    * **Порт гостя:** `22`
-   * [Настройка проброса портов](images/port_forwarding.png)
+   * ![Настройка проброса портов](images/port_forwarding.png)
 
 ### Шаг 4. Конфигурирование SSH-демона и изменение PermitRootLogin
 
@@ -44,12 +44,12 @@
    ```text
    PermitRootLogin yes
    ```
-   * [Редактирование sshd_config](screenshots/sshd_config.png)
+   * ![Редактирование sshd_config](screenshots/sshd_config.png)
 3. Выполнен перезапуск службы для применения новых настроек конфигурации:
    ```bash
    sudo systemctl restart ssh
    ```
-   * [Перезапуск службы SSH](/ssh_restart2.png)
+   * ![Перезапуск службы SSH](/ssh_restart2.png)
 
 ### Шаг 5. Установка и настройка OpenSSH в Windows PowerShell
 
@@ -70,7 +70,7 @@
    ssh sa@localhost-p 2222
    ```
 3. После ввода пароля суперпользователя `root` сессия успешно установилась, доступ к управлению сервером получен.
-   * [Успешное SSH-подключение через CMD](images/cmd_connection.png)
+   * ![Успешное SSH-подключение через CMD](images/cmd_connection.png)
 
 ---
 
